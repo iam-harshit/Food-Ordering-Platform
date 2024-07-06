@@ -11,7 +11,7 @@ const foodRouter = express.Router();
 
 const storage = multer.diskStorage({
   //   destination: 'uploads' //Use in local IDE or for local enivronment
-  destination: "/tmp/uploads", //Use for AWS Lambda function
+  destination: "uploads", //Use for AWS Lambda function
   filename: (req, file, cb) => {
     return cb(null, `${Date.now()}${file.originalname}`);
   },
