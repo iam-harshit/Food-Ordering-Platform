@@ -10,7 +10,8 @@ const foodRouter = express.Router();
 //Image Storage Engine (Saving Image to uploads folder & rename it)
 
 const storage = multer.diskStorage({
-  destination: "/tmp/uploads",
+  //   destination: 'uploads' //Use in local IDE or for local enivronment
+  destination: "/tmp/uploads", //Use for AWS Lambda function
   filename: (req, file, cb) => {
     return cb(null, `${Date.now()}${file.originalname}`);
   },
