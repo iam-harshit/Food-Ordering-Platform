@@ -1,1 +1,1 @@
-export const BACKEND_URL = "http://localhost:3000";
+export const BACKEND_URL = "https://food-ordering-backend-zpe4.onrender.com";
