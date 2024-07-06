@@ -21,7 +21,10 @@ connectDB();
 // api endpoints
 app.use("/api/user", userRouter);
 app.use("/api/food", foodRouter);
-app.use("/images", express.static("/tmp/uploads"));
+// Static files
+const __dirname = path.resolve();
+const uploadsPath = path.join(__dirname, "tmp/uploads");
+app.use("/images", express.static(uploadsPath));
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
 
