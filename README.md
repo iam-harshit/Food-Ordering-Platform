@@ -9,7 +9,6 @@ Food Ordering Platform is a comprehensive web application that allows users to o
 - Features
 - Technology Stack
 - Installation Guide
-- Initial Data Setup
 - Usage
 - Project Structure
 
