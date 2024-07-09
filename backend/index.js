@@ -14,7 +14,15 @@ const port = process.env.PORT || 4000;
 
 // middlewares
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: [
+    "https://frontendfoodordering.vercel.app",
+    "https://foodorderingadmin.vercel.app",
+  ],
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 // db connection
 connectDB();
