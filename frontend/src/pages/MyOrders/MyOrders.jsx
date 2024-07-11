@@ -6,15 +6,22 @@ import { assets } from "../../assets/assets";
 
 const MyOrders = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { BACKEND_URL, token, currency } = useContext(StoreContext);
 
   const fetchOrders = async () => {
-    const response = await axios.post(
-      BACKEND_URL + "/api/order/userorders",
-      {},
-      { headers: { token } }
-    );
-    setData(response.data.data);
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        BACKEND_URL + "/api/order/userorders",
+        {},
+        { headers: { token } }
+      );
+      setData(response.data.data);
+    } catch (error) {
+      console.error("Error fetching orders:", error);
+    }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -27,7 +34,11 @@ const MyOrders = () => {
     <div className="my-orders">
       <h2>My Orders</h2>
       <div className="container">
-        {data.length > 0 ? (
+        {loading ? (
+          <div className="verify">
+            <div className="spinner"></div>
+          </div>
+        ) : data.length > 0 ? (
           data.map((order, index) => {
             return (
               <div key={index} className="my-orders-order">
